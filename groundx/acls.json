@@ -1,0 +1,204 @@
+{
+	"pro": {
+		"endpoints": {
+			"apikey": {
+				"get": true,
+				"post": true,
+				"variable": {
+					"delete": true,
+					"get": true,
+					"put": true
+				}
+			},
+			"bucket": {
+				"get": true,
+				"post": true,
+				"variable": {
+					"delete": true,
+					"get": true,
+					"put": true,
+					"post": true
+				}
+			},
+			"customer": {
+				"get": true,
+				"post": true,
+				"endpoints": {
+					"login": {
+						"post": true
+					},
+					"meter": {
+						"variable": {
+							"get": true
+						}
+					},
+					"notification": {
+						"endpoints": {
+							"dev": {
+								"post": true
+							},
+							"sales": {
+								"post": true
+							},
+							"support": {
+								"post": true
+							}
+						}
+					},
+					"password": {
+						"endpoints": {
+							"reset": {
+								"post": true
+							},
+							"confirm": {
+								"post": true
+							}
+						}
+					},
+					"register": {
+						"post": true
+					}
+				},
+				"variable": {
+					"delete": true,
+					"get": true,
+					"post": true
+				}
+			},
+			"health": {
+				"get": true,
+				"variable": {
+					"get": true
+				}
+			},
+			"group": {
+				"get": true,
+				"post": true,
+				"endpoints": {
+					"kit": {
+						"variable": {
+							"post": true,
+							"delete": true
+						}
+					}
+				},
+				"variable": {
+					"delete": true,
+					"get": true,
+					"put": true,
+					"post": true,
+					"endpoints": {
+						"bucket": {
+							"variable": {
+								"post": true,
+								"delete": true
+							}
+						}
+					}
+				}
+			},
+			"ingest": {
+				"get": true,
+				"endpoints": {
+					"document": {
+						"post": true,
+						"endpoints": {
+							"demo": {
+								"post": true,
+								"variable": {
+									"get": true,
+									"post": true
+								}
+							}
+						},
+						"variable": {
+							"get": true,
+							"delete": true
+						}
+					},
+					"documents": {
+						"get": true,
+						"post": true,
+						"delete": true,
+						"endpoints": {
+							"local": {
+								"post": true
+							},
+							"remote": {
+								"post": true
+							},
+							"website": {
+								"post": true
+							}
+						},
+						"variable": {
+							"get": true
+						}
+					}
+				},
+				"variable": {
+					"get": true
+				}
+			},
+			"project": {
+				"get": true,
+				"post": true,
+				"endpoints": {
+					"kit": {
+						"variable": {
+							"post": true,
+							"delete": true
+						}
+					}
+				},
+				"variable": { 
+					"delete": true,
+					"get": true,
+					"put": true,
+					"post": true,
+					"endpoints": {
+						"bucket": {
+							"variable": {
+								"post": true,
+								"delete": true
+							}
+						}
+					}
+				}
+			},
+			"search": {
+				"post": true,
+				"variable": {
+					"post": true
+				}
+			},
+			"subscription": {
+				"endpoints": {
+					"billing": {
+						"variable": {
+							"post": true
+						}
+					},
+					"invoices": {
+						"variable": {
+							"get": true
+						}
+					},
+					"source": {
+						"variable": {
+							"post": true
+						}
+					}
+				},
+				"variable": {
+					"get": true,
+					"post": true,
+					"variable": {
+						"get": true,
+						"delete": true
+					}
+				}
+			}
+		}
+	}
+}
