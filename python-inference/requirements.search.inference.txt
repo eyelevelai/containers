@@ -1,0 +1,9 @@
+tensorflow
+transformers
+torch
+bitsandbytes
+accelerate
+optimum[onnxruntime-gpu]
+celery
+redis
+pydantic
