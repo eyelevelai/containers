@@ -1,5 +1,0 @@
-uvicorn
-fastapi
-celery
-redis
-tiktoken==0.6.0

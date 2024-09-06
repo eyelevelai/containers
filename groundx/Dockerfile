@@ -9,11 +9,12 @@ WORKDIR /app
 
 # Copy the service file and binary into the container
 #COPY your-binary /usr/local/bin/your-binary
-COPY acls.json /app/acls.json
-COPY bootstrap /app/bootstrap
+COPY acls.json /app/
+COPY bootstrap /app/
+COPY wait-for-it.sh /app/
 
 # Set permissions to ensure OpenShift compatibility
-RUN chmod -R g+rwX /app && chown -R 1000:1000 /app
+RUN chmod -R 1777 /app && chown -R 1000:1000 /app
 
 EXPOSE 8080
 

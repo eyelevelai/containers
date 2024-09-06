@@ -8,14 +8,14 @@ WORKDIR /app
 RUN groupadd -g 1000 golang
 
 # Create a user with UID 1000 and associate it with GID 1000
-RUN useradd -u 1000 -g golang -m -s /bin/bash golang
+RUN useradd -u 1000 -g 1000 -m -s /bin/bash golang
 
 # Set permissions to ensure OpenShift compatibility
-RUN chmod -R g+rwX /app && chown -R 1000:1000 /app
+RUN chmod -R 1777 /app && chown -R 1000:1000 /app
 
 # Set the default user back to golang
 USER 1000
 
 ENV HOME=/home/golang
 
-RUN mkdir -p ~/.cashbot && chmod -R g+rwX ~/.cashbot
+RUN mkdir -p ~/.cashbot && chmod -R 1777 ~/.cashbot

@@ -7,23 +7,16 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y python3 pip vim curl
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
-# Download the necessary tiktoken files and cache them in the image
-RUN mkdir -p /app/tiktoken_cache && \
-    curl -o /app/tiktoken_cache/vocab.bpe https://openaipublic.blob.core.windows.net/gpt-2/encodings/main/vocab.bpe && \
-    curl -o /app/tiktoken_cache/encoder.json https://openaipublic.blob.core.windows.net/gpt-2/encodings/main/encoder.json
-
-COPY requirements.search.inference.txt /app/requirements.txt
-
 RUN mkdir -p /app/hf_models_cache
 
 # Create a group with GID 1001
 RUN groupadd -g 1001 python
 
 # Create a user with UID 1001 and associate it with GID 1001
-RUN useradd -u 1001 -g python -m -s /bin/bash python
+RUN useradd -u 1001 -g 1001 -m -s /bin/bash python
 
 # Set permissions to ensure OpenShift compatibility
-RUN chmod -R g+rwX /app && chown -R 1001:1001 /app
+RUN chmod -R 1777 /app && chown -R 1001:1001 /app
 
 USER 1001
 
@@ -37,5 +30,16 @@ ENV PATH="${HOME}/.local/bin:${PATH}"
 ENV TIKTOKEN_CACHE_DIR=/app/tiktoken_cache
 
 # Install the required Python packages
-RUN pip install --default-timeout=600 -r requirements.txt
-RUN pip install --upgrade typing_extensions
+RUN pip install --no-cache-dir --upgrade pip
+
+RUN pip install --no-cache-dir tensorflow
+RUN pip install --no-cache-dir transformers
+RUN pip install --no-cache-dir torch
+RUN pip install --no-cache-dir bitsandbytes
+RUN pip install --no-cache-dir accelerate
+RUN pip install --no-cache-dir optimum[onnxruntime-gpu]
+RUN pip install --no-cache-dir celery
+RUN pip install --no-cache-dir redis
+RUN pip install --no-cache-dir pydantic
+
+RUN pip install --no-cache-dir --upgrade typing_extensions
