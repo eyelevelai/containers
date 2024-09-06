@@ -16,4 +16,6 @@ RUN chmod -R g+rwX /app && chown -R 1000:1000 /app
 # Set the default user back to golang
 USER 1000
 
+ENV HOME=/home/golang
+
 RUN mkdir -p ~/.cashbot && chmod -R g+rwX ~/.cashbot

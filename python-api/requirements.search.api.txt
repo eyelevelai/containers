@@ -2,4 +2,4 @@ uvicorn
 fastapi
 celery
 redis
-tiktoken
+tiktoken==0.6.0
