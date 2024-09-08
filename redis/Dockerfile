@@ -6,16 +6,16 @@ USER root
 
 # Ensure the Redis user can read the configuration file
 RUN chown 1001:1001 /etc/redis.conf \
-    && chmod 1777 /etc/redis.conf
+    && chmod 777 /etc/redis.conf
 
 # Create the required directories and set permissions
 RUN mkdir -p /mnt/redis && \
     chown -R 1001:1001 /mnt/redis && \
     chown -R 1001:1001 /var/lib/redis && \
     chown -R 1001:1001 /etc/redis.conf && \
-    chmod -R 1777 /etc/redis.conf && \
-    chmod -R 1777 /var/lib/redis && \
-    chmod -R 1777 /mnt/redis
+    chmod -R 777 /etc/redis.conf && \
+    chmod -R 777 /var/lib/redis && \
+    chmod -R 777 /mnt/redis
 
 # Set the default user back to the OpenShift random UID
 USER 1001

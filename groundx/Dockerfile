@@ -11,10 +11,9 @@ WORKDIR /app
 #COPY your-binary /usr/local/bin/your-binary
 COPY acls.json /app/
 COPY bootstrap /app/
-COPY wait-for-it.sh /app/
 
 # Set permissions to ensure OpenShift compatibility
-RUN chmod -R 1777 /app && chown -R 1000:1000 /app
+RUN chmod -R 777 /app && chown -R 1000:1000 /app
 
 EXPOSE 8080
 

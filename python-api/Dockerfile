@@ -18,7 +18,7 @@ RUN groupadd -g 1001 python
 RUN useradd -u 1001 -g 1001 -m -s /bin/bash python
 
 # Set permissions to ensure OpenShift compatibility
-RUN chmod -R 1777 /app && chown -R 1001:1001 /app
+RUN chmod -R 777 /app && chown -R 1001:1001 /app
 
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
