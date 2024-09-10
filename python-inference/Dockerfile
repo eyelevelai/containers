@@ -4,7 +4,10 @@ USER root
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y python3 pip vim curl
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install required build tools for h5py and other libraries
+RUN apt-get update && apt-get install -y python3 pip vim curl pkg-config libhdf5-dev build-essential
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
 RUN mkdir -p /app/hf_models_cache
@@ -18,15 +21,11 @@ RUN useradd -u 1001 -g 1001 -m -s /bin/bash python
 # Set permissions to ensure OpenShift compatibility
 RUN chmod -R 777 /app && chown -R 1001:1001 /app
 
-USER 1001
-
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 ENV HF_HOME=/app/hf_models_cache
 ENV LOCAL=0
 ENV LOAD_MODEL=1
-ENV HOME="/home/python"
-ENV PATH="${HOME}/.local/bin:${PATH}"
 ENV TIKTOKEN_CACHE_DIR=/app/tiktoken_cache
 
 # Install the required Python packages
@@ -43,3 +42,5 @@ RUN pip install --no-cache-dir redis
 RUN pip install --no-cache-dir pydantic
 
 RUN pip install --no-cache-dir --upgrade typing_extensions
+
+USER 1001

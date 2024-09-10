@@ -31,10 +31,11 @@ if [ ! -d "$app" ]; then
   exit 1
 fi
 
-docker build --platform linux/amd64 -t public.ecr.aws/c9r4x6y5/eyelevel/$app:latest $app
+aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
+
+docker buildx build --platform linux/amd64,linux/arm64 -t public.ecr.aws/c9r4x6y5/eyelevel/$app:latest $app
 
 # Log in to AWS ECR and push if push_flag is true
 if [ "$push_flag" = true ]; then
-  aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
   docker push public.ecr.aws/c9r4x6y5/eyelevel/$app:latest
 fi
