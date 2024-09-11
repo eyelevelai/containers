@@ -13,10 +13,10 @@ COPY acls.json /app/
 COPY bootstrap /app/
 
 # Set permissions to ensure OpenShift compatibility
-RUN chmod -R 777 /app && chown -R 1000:1000 /app
+RUN chmod -R 777 /app && chown -R 1001:1001 /app
 
 EXPOSE 8080
 
-USER 1000
+USER 1001
 
 CMD ["/app/bootstrap"]
