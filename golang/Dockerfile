@@ -1,3 +1,5 @@
+# Base Golang container for Lambdas
+
 # Start with the official Red Hat Redis image
 FROM golang:latest
 

@@ -1,4 +1,4 @@
-# GroundX Lambda
+# DocumentLayoutWebhook Lambda
 
 # Start with the EyeLevel Golang image
 FROM public.ecr.aws/c9r4x6y5/eyelevel/golang:latest
@@ -10,7 +10,6 @@ USER root
 WORKDIR /app
 
 # Copy the service file and binary into the container
-COPY acls.json /app/
 COPY bootstrap /app/
 
 # Set permissions to ensure OpenShift compatibility
